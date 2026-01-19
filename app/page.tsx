@@ -5,13 +5,13 @@
 
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 // --- 1. 定数・データ定義 ---
 
@@ -70,14 +70,18 @@ export default function PokemonTypeCalculator() {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState<{ name: string; types: string[] }[]>([]);
 
+  // --- 選択中かどうかを保持するフラグ ---
+  const isSelecting = useRef(false);
+
   /**
    * 検索窓の入力に基づくポケモン候補の取得
    * デバウンス処理によりAPIリクエスト回数を抑制
    */
   useEffect(() => {
     const fetchPokemon = async () => {
-      if (searchTerm.trim().length < 1) {
-        setSuggestions([]);
+      if (searchTerm.trim().length < 1 || isSelecting.current) {
+        // フラグが立っている場合は、検索を止めた後にフラグを戻す
+        isSelecting.current = false;
         return;
       }
       try {
@@ -123,6 +127,12 @@ export default function PokemonTypeCalculator() {
   }, [selectedDefenseTypes]);
 
   // --- ハンドラー (Handlers) ---
+  const handleSelectPokemon = (name: string, types: string[]) => {
+    isSelecting.current = true; // 「今から選択します」というフラグを立てる
+    setSelectedDefenseTypes(types);
+    setSearchTerm(name);
+    setSuggestions([]); // 確実にリストを空にする
+  };
 
   /**
    * 防御タイプのトグル処理
@@ -149,7 +159,7 @@ export default function PokemonTypeCalculator() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 p-6 text-slate-900 dark:text-slate-100">
       <div className="max-w-2xl mx-auto space-y-6">
-        
+
         {/* 1. 検索セクション */}
         <section className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow border border-slate-200 dark:border-slate-700">
           <h2 className="text-lg font-bold mb-4">ポケモン名で検索</h2>
@@ -157,7 +167,10 @@ export default function PokemonTypeCalculator() {
             <input
               type="text"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => {
+                isSelecting.current = false; // 手入力されたらフラグを折る
+                setSearchTerm(e.target.value);
+              }}
               placeholder="例: ピカチュウ"
               className="w-full p-3 rounded-md border border-slate-200 dark:border-slate-600 dark:bg-slate-700 outline-none focus:ring-2 focus:ring-blue-500 transition-all"
             />
@@ -168,10 +181,10 @@ export default function PokemonTypeCalculator() {
                   <button
                     key={p.name}
                     className="w-full text-left p-3 hover:bg-slate-100 dark:hover:bg-slate-600 border-b last:border-0 border-slate-100 dark:border-slate-600 transition-colors"
-                    onClick={() => {
-                      setSelectedDefenseTypes(p.types);
-                      setSearchTerm(p.name);
-                      setSuggestions([]);
+                    // onClick ではなく onMouseDown を使用
+                    onMouseDown={(e) => {
+                      e.preventDefault(); // input の onBlur による消失を防ぐ（もし今後追加する場合も安心）
+                      handleSelectPokemon(p.name, p.types);
                     }}
                   >
                     <span className="font-bold">{p.name}</span>
@@ -191,13 +204,11 @@ export default function PokemonTypeCalculator() {
               <button
                 key={type}
                 onClick={() => toggleDefenseType(type)}
-                className={`px-4 py-2 rounded font-bold transition-all ${TYPE_COLORS[type]} ${
-                  type === "あく" ? "text-white" : "text-slate-900"
-                } ${
-                  selectedDefenseTypes.includes(type)
+                className={`px-4 py-2 rounded font-bold transition-all ${TYPE_COLORS[type]} ${type === "あく" ? "text-white" : "text-slate-900"
+                  } ${selectedDefenseTypes.includes(type)
                     ? "ring-4 ring-slate-900 dark:ring-white scale-105 opacity-100"
                     : "opacity-40 hover:opacity-60"
-                }`}
+                  }`}
               >
                 {type}
               </button>
@@ -222,9 +233,8 @@ export default function PokemonTypeCalculator() {
                       {list.map((r) => (
                         <div
                           key={r.type}
-                          className={`p-2 text-center rounded text-sm font-bold shadow-sm border border-black/5 ${
-                            TYPE_COLORS[r.type]
-                          } ${r.type === "あく" ? "text-white" : "text-slate-900"}`}
+                          className={`p-2 text-center rounded text-sm font-bold shadow-sm border border-black/5 ${TYPE_COLORS[r.type]
+                            } ${r.type === "あく" ? "text-white" : "text-slate-900"}`}
                         >
                           {r.type}
                         </div>
