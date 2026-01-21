@@ -1,7 +1,7 @@
-import type React from "react"
+import { Analytics } from "@vercel/analytics/next"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
+import type React from "react"
 import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
@@ -36,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ja">
+    <html lang="ja" suppressHydrationWarning>
       <body className={`font-sans antialiased`}>
         {children}
         <Analytics />
