@@ -15,19 +15,16 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 // --- 1. 定数・データ定義 ---
 
-/** 全18タイプの定義 */
 const TYPES = [
   "ノーマル", "ほのお", "みず", "でんき", "くさ", "こおり", "かくとう", "どく", "じめん",
   "ひこう", "エスパー", "むし", "いわ", "ゴースト", "ドラゴン", "あく", "はがね", "フェアリー",
 ] as const;
 
-/** 相性倍率の定数 */
-const SE = 2.0; // 効果ばつぐん
-const RE = 0.5; // 効果いまひとつ
-const IM = 0;   // 効果なし
-const NE = 1.0; // 等倍
+const SE = 2.0;
+const RE = 0.5;
+const IM = 0;
+const NE = 1.0;
 
-/** 各タイプのUI表示用背景色（Tailwind CSSクラス） */
 const TYPE_COLORS: Record<string, string> = {
   ノーマル: "bg-gray-400", ほのお: "bg-red-500", みず: "bg-blue-500", でんき: "bg-yellow-400",
   くさ: "bg-green-500", こおり: "bg-cyan-400", かくとう: "bg-orange-600", どく: "bg-purple-500",
@@ -36,7 +33,6 @@ const TYPE_COLORS: Record<string, string> = {
   はがね: "bg-slate-500", フェアリー: "bg-pink-400",
 };
 
-/** 相性表：[攻撃わざタイプ][防御ポケモンタイプ] */
 const CHART: Record<string, Record<string, number>> = {
   ノーマル: { ノーマル: NE, ほのお: NE, みず: NE, でんき: NE, くさ: NE, こおり: NE, かくとう: NE, どく: NE, じめん: NE, ひこう: NE, エスパー: NE, むし: NE, いわ: RE, ゴースト: IM, ドラゴン: NE, あく: NE, はがね: RE, フェアリー: NE },
   ほのお: { ノーマル: NE, ほのお: RE, みず: RE, でんき: NE, くさ: SE, こおり: SE, かくとう: NE, どく: NE, じめん: NE, ひこう: NE, エスパー: NE, むし: SE, いわ: RE, ゴースト: NE, ドラゴン: RE, あく: NE, はがね: SE, フェアリー: NE },
@@ -58,29 +54,43 @@ const CHART: Record<string, Record<string, number>> = {
   フェアリー: { ノーマル: NE, ほのお: RE, みず: NE, でんき: NE, くさ: NE, こおり: NE, かくとう: SE, どく: RE, じめん: NE, ひこう: NE, エスパー: NE, むし: NE, いわ: NE, ゴースト: NE, ドラゴン: SE, あく: SE, はがね: RE, フェアリー: NE },
 };
 
+const categoryLabels: Record<string, string> = {
+  "double-super-effective": "効果はちょうバツグンだ! (×4.0)",
+  "super-effective": "効果はバツグンだ! (×2.0)",
+  "neutral": "等倍 (×1.0)",
+  "resistant": "効果はいまひとつだ (×0.5)",
+  "double-resistant": "効果はかなりいまひとつだ (×0.25)",
+  "triple-resistant-immune": "効果がないようだ…",
+};
+
 // --- 2. メインコンポーネント ---
 
-/**
- * ポケモンタイプ相性計算機
- * 検索機能、手動タイプ選択、および結果表示のアコーディオンを含む
- */
 export default function PokemonTypeCalculator() {
-  // --- 状態管理 (State) ---
   const [selectedDefenseTypes, setSelectedDefenseTypes] = useState<string[]>(["ノーマル"]);
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState<{ name: string; types: string[] }[]>([]);
-
-  // --- 選択中かどうかを保持するフラグ ---
+  const [activeItems, setActiveItems] = useState<string[]>([]);
   const isSelecting = useRef(false);
 
-  /**
-   * 検索窓の入力に基づくポケモン候補の取得
-   * デバウンス処理によりAPIリクエスト回数を抑制
-   */
+  // 汎用的な弱点チェック関数
+  const getWeaknessCategories = (defenseTypes: string[]) => {
+    const targets = ["double-super-effective", "super-effective"];
+    const hasWeakness = TYPES.some((attackType) => {
+      const multiplier = defenseTypes.reduce((acc, def) => acc * (CHART[attackType]?.[def] ?? 1.0), 1.0);
+      return multiplier >= 2.0;
+    });
+    return hasWeakness ? targets : [];
+  };
+
+  // 初期表示時に弱点があれば展開
+  useEffect(() => {
+    const initialOpen = getWeaknessCategories(selectedDefenseTypes);
+    setActiveItems(initialOpen);
+  }, []);
+
   useEffect(() => {
     const fetchPokemon = async () => {
       if (searchTerm.trim().length < 1 || isSelecting.current) {
-        // フラグが立っている場合は、検索を止めた後にフラグを戻す
         isSelecting.current = false;
         return;
       }
@@ -93,22 +103,16 @@ export default function PokemonTypeCalculator() {
         console.error("API Fetch Error:", error);
       }
     };
-
     const timer = setTimeout(fetchPokemon, 300);
     return () => clearTimeout(timer);
   }, [searchTerm]);
 
-  /**
-   * 選択された防御タイプに基づき、全攻撃タイプとの相性を計算
-   */
   const groupedResults = useMemo(() => {
     const results = TYPES.map((attackType) => {
       const multiplier = selectedDefenseTypes.reduce((acc, defType) => {
-        const m = CHART[attackType]?.[defType] ?? NE;
-        return acc * m;
+        return acc * (CHART[attackType]?.[defType] ?? NE);
       }, 1.0);
 
-      // カテゴリ分類
       let category = "neutral";
       if (multiplier >= 4.0) category = "double-super-effective";
       else if (multiplier >= 2.0) category = "super-effective";
@@ -126,34 +130,33 @@ export default function PokemonTypeCalculator() {
     }, {} as Record<string, typeof results>);
   }, [selectedDefenseTypes]);
 
-  // --- ハンドラー (Handlers) ---
+  // --- ハンドラー ---
   const handleSelectPokemon = (name: string, types: string[]) => {
-    isSelecting.current = true; // 「今から選択します」というフラグを立てる
+    isSelecting.current = true;
     setSelectedDefenseTypes(types);
     setSearchTerm(name);
-    setSuggestions([]); // 確実にリストを空にする
+    setSuggestions([]);
+
+    // 弱点があれば自動展開
+    const openItems = getWeaknessCategories(types);
+    setActiveItems(openItems);
   };
 
-  /**
-   * 防御タイプのトグル処理
-   * 最大2つまで。1つの時は解除不可。
-   */
   const toggleDefenseType = (type: string) => {
     setSelectedDefenseTypes((prev) => {
+      let next;
       if (prev.includes(type)) {
-        return prev.length > 1 ? prev.filter((t) => t !== type) : prev;
+        next = prev.length > 1 ? prev.filter((t) => t !== type) : prev;
+      } else {
+        next = prev.length < 2 ? [...prev, type] : [prev[1], type];
       }
-      return prev.length < 2 ? [...prev, type] : [prev[1], type];
-    });
-  };
 
-  const categoryLabels: Record<string, string> = {
-    "double-super-effective": "効果はちょうバツグンだ! (×4.0)",
-    "super-effective": "効果はバツグンだ! (×2.0)",
-    "neutral": "等倍 (×1.0)",
-    "resistant": "効果はいまひとつだ (×0.5)", // 1/2を「いまひとつ」に
-    "double-resistant": "効果はかなりいまひとつだ (×0.25)", // 1/4を「かなりいまひとつ」に
-    "triple-resistant-immune": "効果がないようだ…",
+      // 弱点があれば自動展開
+      const openItems = getWeaknessCategories(next);
+      if (openItems.length > 0) setActiveItems(openItems);
+
+      return next;
+    });
   };
 
   return (
@@ -168,22 +171,20 @@ export default function PokemonTypeCalculator() {
               type="text"
               value={searchTerm}
               onChange={(e) => {
-                isSelecting.current = false; // 手入力されたらフラグを折る
+                isSelecting.current = false;
                 setSearchTerm(e.target.value);
               }}
               placeholder="例: ピカチュウ"
               className="w-full p-3 rounded-md border border-slate-200 dark:border-slate-600 dark:bg-slate-700 outline-none focus:ring-2 focus:ring-blue-500 transition-all"
             />
-            {/* 検索候補リスト */}
             {suggestions.length > 0 && (
               <div className="absolute z-10 w-full mt-1 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded shadow-lg overflow-hidden">
                 {suggestions.map((p) => (
                   <button
                     key={p.name}
                     className="w-full text-left p-3 hover:bg-slate-100 dark:hover:bg-slate-600 border-b last:border-0 border-slate-100 dark:border-slate-600 transition-colors"
-                    // onClick ではなく onMouseDown を使用
                     onMouseDown={(e) => {
-                      e.preventDefault(); // input の onBlur による消失を防ぐ（もし今後追加する場合も安心）
+                      e.preventDefault();
                       handleSelectPokemon(p.name, p.types);
                     }}
                   >
@@ -219,7 +220,12 @@ export default function PokemonTypeCalculator() {
 
         {/* 3. 計算結果セクション */}
         <section className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow border border-slate-200 dark:border-slate-700">
-          <Accordion type="multiple" className="w-full">
+          <Accordion
+            type="multiple"
+            value={activeItems}
+            onValueChange={setActiveItems}
+            className="w-full"
+          >
             {Object.keys(categoryLabels).map((cat) => {
               const list = groupedResults[cat];
               if (!list || list.length === 0) return null;
@@ -247,23 +253,14 @@ export default function PokemonTypeCalculator() {
           </Accordion>
         </section>
 
-        {/* 4. フッタークレジット */}
+        {/* 4. フッター */}
         <footer className="mt-12 py-6 border-t border-slate-200 dark:border-slate-700 text-center space-y-2">
           <p className="text-xs text-slate-500 dark:text-slate-400">
             © 2026 pokemon-type-simulator | MIT License
           </p>
           <p className="text-[10px] text-slate-400 dark:text-slate-500 leading-relaxed max-w-md mx-auto">
             Data provided by{" "}
-            <a
-              href="https://pokeapi.co/"
-              target="_blank"
-              rel="noreferrer"
-              className="underline hover:text-blue-500"
-            >
-              PokeAPI
-            </a>
-            . Pokémon and Pokémon character names are trademarks of Nintendo, Creatures Inc., and GAME
-            FREAK inc. This is an unofficial fan tool.
+            <a href="https://pokeapi.co/" target="_blank" rel="noreferrer" className="underline hover:text-blue-500">PokeAPI</a>.
           </p>
         </footer>
       </div>
