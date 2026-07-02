@@ -17,7 +17,6 @@ This file provides guidance to AI coding agents (Claude Code, etc.) when working
 | `hooks/` | `use-pokemon-search.ts`（ポケモン名検索のデバウンス・状態管理）などのカスタムフック |
 | `lib/` | `type-chart.ts`（タイプ相性表・相性計算ロジック）、`utils.ts`（`cn`などの汎用ユーティリティ） |
 | `public/` | アイコン・プレースホルダー画像などの静的アセット |
-| `slide/` | フローチャート・スライド構成のドキュメント（`flow-chart.md`、`slide-outline.md`） |
 
 ## Commands
 

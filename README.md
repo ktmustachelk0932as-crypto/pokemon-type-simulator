@@ -19,7 +19,7 @@
 
 ## 技術スタック
 
-- **フレームワーク**: Next.js 16.0.10 (App Router)
+- **フレームワーク**: Next.js 16.2.10 (App Router)
 - **言語**: TypeScript
 - **UI**: React 19.2.0
 - **スタイリング**: Tailwind CSS 4.1.9
@@ -74,16 +74,24 @@ pokemon-type-simulator/
 ├── app/
 │   ├── api/
 │   │   └── pokemon/
-│   │       └── route.ts          # ポケモン検索API
-│   ├── layout.tsx                # ルートレイアウト
-│   ├── page.tsx                  # メインページ
-│   └── globals.css               # グローバルスタイル
+│   │       └── route.ts              # ポケモン検索API
+│   ├── layout.tsx                    # ルートレイアウト
+│   ├── page.tsx                      # メインページ（構成コンポーネント）
+│   └── globals.css                   # グローバルスタイル
 ├── components/
-│   └── ui/                       # UIコンポーネント
+│   ├── ui/                           # shadcn/uiで生成したUIプリミティブ
+│   ├── pokemon-search-box.tsx        # ポケモン名検索ボックス
+│   ├── type-selector.tsx             # タイプ手動選択UI
+│   └── effectiveness-results.tsx     # 効果倍率カテゴリ別の結果表示
+├── hooks/
+│   └── use-pokemon-search.ts         # ポケモン名検索のデバウンス・状態管理
+├── lib/
+│   ├── type-chart.ts                 # タイプ相性表・相性計算ロジック
+│   └── utils.ts                      # 汎用ユーティリティ（cnなど）
 ├── src/
 │   └── data/
-│       ├── fetch-pokemon.mjs     # ポケモンデータ取得スクリプト
-│       └── pokemon.json          # ポケモンデータ（生成される）
+│       ├── fetch-pokemon.mjs         # ポケモンデータ取得スクリプト
+│       └── pokemon.json              # ポケモンデータ（生成される）
 ├── package.json
 └── tsconfig.json
 ```
