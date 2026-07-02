@@ -10,15 +10,14 @@ This file provides guidance to AI coding agents (Claude Code, etc.) when working
 
 | ディレクトリ | 役割 |
 |-------------|------|
-| `app/` | Next.js App Router本体。`page.tsx`にUI・状態管理・タイプ相性ロジックが集約、`api/pokemon/route.ts`が唯一有効なポケモン検索API |
+| `app/` | Next.js App Router本体。`page.tsx`は`lib/type-chart.ts`・`hooks/use-pokemon-search.ts`・`components/`のUIパーツを組み合わせる構成コンポーネント、`api/pokemon/route.ts`が唯一有効なポケモン検索API |
 | `src/data/` | `fetch-pokemon.mjs`（PokeAPI取得スクリプト）と、その出力である`pokemon.json`（コミット対象） |
 | `components/ui/` | shadcn/ui（style: new-york, baseColor: neutral）で生成されたUIプリミティブ |
-| `components/` | `theme-provider.tsx`など手書きの共有コンポーネント |
-| `hooks/` | `use-mobile.ts`、`use-toast.ts` などのカスタムフック |
-| `lib/` | `utils.ts`（`cn`などの汎用ユーティリティ） |
+| `components/` | `pokemon-search-box.tsx`・`type-selector.tsx`・`effectiveness-results.tsx`など、トップページを構成する手書きのUIコンポーネント |
+| `hooks/` | `use-pokemon-search.ts`（ポケモン名検索のデバウンス・状態管理）などのカスタムフック |
+| `lib/` | `type-chart.ts`（タイプ相性表・相性計算ロジック）、`utils.ts`（`cn`などの汎用ユーティリティ） |
 | `public/` | アイコン・プレースホルダー画像などの静的アセット |
 | `slide/` | フローチャート・スライド構成のドキュメント（`flow-chart.md`、`slide-outline.md`） |
-| `styles/` | グローバルスタイル（`app/globals.css`と重複気味なので変更時は両方確認） |
 
 ## Commands
 
@@ -39,8 +38,8 @@ npm run fetch-pokemon   # PokeAPIからsrc/data/pokemon.jsonを更新
 - 言語: TypeScript / React 19 / Next.js App Router
 - UIコンポーネント: `components/ui/`はshadcn CLIで生成・管理されたものとして扱い、手書きせず既存セットとの一貫性を保つ
 - パスエイリアス: `@/*`はリポジトリルートにマッピング（`tsconfig.json`）。`components.json`のshadcn aliases（`@/components`、`@/lib`、`@/hooks`、`@/components/ui`）と整合させる
-- タイプ相性表（`CHART`）や18タイプリスト、Tailwindカラーマップは`app/page.tsx`にハードコードされた定数であり、PokeAPI由来ではない。相性ルールを変更する場合はこのオブジェクトを直接編集する
-- 複数タイプの効果倍率は各防御側タイプに対する倍率の積（例: ほのお×みず/くさ = 0.5 × 2.0 = 1.0）。`groupedResults`内の`reduce`で計算
+- タイプ相性表（`CHART`）や18タイプリスト、Tailwindカラーマップは`lib/type-chart.ts`にハードコードされた定数であり、PokeAPI由来ではない。相性ルールを変更する場合はこのオブジェクトを直接編集する
+- 複数タイプの効果倍率は各防御側タイプに対する倍率の積（例: ほのお×みず/くさ = 0.5 × 2.0 = 1.0）。`lib/type-chart.ts`の`getMultiplier`/`groupResultsByCategory`で計算
 
 ## Boundaries
 
