@@ -69,7 +69,6 @@ export default function PokemonTypeCalculator() {
   const [selectedDefenseTypes, setSelectedDefenseTypes] = useState<string[]>(["ノーマル"]);
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState<{ name: string; types: string[] }[]>([]);
-  const [activeItems, setActiveItems] = useState<string[]>([]);
   const isSelecting = useRef(false);
 
   // 汎用的な弱点チェック関数
@@ -83,10 +82,7 @@ export default function PokemonTypeCalculator() {
   };
 
   // 初期表示時に弱点があれば展開
-  useEffect(() => {
-    const initialOpen = getWeaknessCategories(selectedDefenseTypes);
-    setActiveItems(initialOpen);
-  }, []);
+  const [activeItems, setActiveItems] = useState<string[]>(() => getWeaknessCategories(selectedDefenseTypes));
 
   useEffect(() => {
     const fetchPokemon = async () => {

@@ -95,6 +95,9 @@ function Carousel({
 
   React.useEffect(() => {
     if (!api) return
+    // Sync scroll button state as soon as the embla instance is ready,
+    // before the first 'select'/'reInit' event fires.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     onSelect(api)
     api.on('reInit', onSelect)
     api.on('select', onSelect)
