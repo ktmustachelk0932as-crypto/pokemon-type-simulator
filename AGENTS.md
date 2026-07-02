@@ -12,7 +12,6 @@ This file provides guidance to AI coding agents (Claude Code, etc.) when working
 |-------------|------|
 | `app/` | Next.js App Router本体。`page.tsx`にUI・状態管理・タイプ相性ロジックが集約、`api/pokemon/route.ts`が唯一有効なポケモン検索API |
 | `src/data/` | `fetch-pokemon.mjs`（PokeAPI取得スクリプト）と、その出力である`pokemon.json`（コミット対象） |
-| `src/app/` | **旧APIルートの残骸。App Routerからは解決されないデッドコード。** 編集しても反映されない |
 | `components/ui/` | shadcn/ui（style: new-york, baseColor: neutral）で生成されたUIプリミティブ |
 | `components/` | `theme-provider.tsx`など手書きの共有コンポーネント |
 | `hooks/` | `use-mobile.ts`、`use-toast.ts` などのカスタムフック |
@@ -45,7 +44,6 @@ npm run fetch-pokemon   # PokeAPIからsrc/data/pokemon.jsonを更新
 
 ## Boundaries
 
-- `src/app/api/pokemon/route.ts`は編集しない（App Routerからは解決されないデッドコード）。ポケモン検索APIの正は`app/api/pokemon/route.ts`のみ
 - `next.config.mjs`の`typescript.ignoreBuildErrors: true`は`npm run build`を型エラーで失敗させない設定。外す場合は既存の型エラーが顕在化するため事前に確認を求める
 - `.env*`ファイルを変更・コミットしない
 - 重要な設計判断（タイプ相性ロジックの変更、UIライブラリの入れ替えなど）を独断で進めない。必ず確認を求める

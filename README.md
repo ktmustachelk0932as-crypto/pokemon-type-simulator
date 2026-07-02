@@ -81,10 +81,6 @@ pokemon-type-simulator/
 ├── components/
 │   └── ui/                       # UIコンポーネント
 ├── src/
-│   ├── app/
-│   │   └── api/
-│   │       └── pokemon/
-│   │           └── route.ts      # APIルート（旧）
 │   └── data/
 │       ├── fetch-pokemon.mjs     # ポケモンデータ取得スクリプト
 │       └── pokemon.json          # ポケモンデータ（生成される）
