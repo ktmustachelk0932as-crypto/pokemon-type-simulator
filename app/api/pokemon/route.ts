@@ -4,7 +4,7 @@
  */
 
 import { NextResponse } from 'next/server';
-import { readFileSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
 
 type Pokemon = { name: string; types: string[] };
@@ -33,10 +33,17 @@ export async function GET(request: Request) {
   if (!query) return NextResponse.json([]);
 
   try {
-    // JSONファイルを読み込む
+    // JSONファイルを読み込む（ベースデータ + リージョンフォーム）
     const filePath = join(process.cwd(), 'src', 'data', 'pokemon.json');
     const fileContents = readFileSync(filePath, 'utf8');
-    const pokemonData: Pokemon[] = JSON.parse(fileContents);
+    const baseData: Pokemon[] = JSON.parse(fileContents);
+
+    const variantsFilePath = join(process.cwd(), 'src', 'data', 'pokemon-regional-forms.json');
+    const variantsData: Pokemon[] = existsSync(variantsFilePath)
+      ? JSON.parse(readFileSync(variantsFilePath, 'utf8'))
+      : [];
+
+    const pokemonData: Pokemon[] = [...baseData, ...variantsData];
 
     // 検索ワードをカタカナに変換（ひらがな入力にも対応）
     const normalizedQuery = toKatakana(query);

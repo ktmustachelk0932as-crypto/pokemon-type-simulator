@@ -1,0 +1,541 @@
+[
+  {
+    "name": "コラッタ(アローラのすがた)",
+    "types": [
+      "あく",
+      "ノーマル"
+    ],
+    "baseId": 19,
+    "formKey": "alola"
+  },
+  {
+    "name": "ラッタ(アローラのすがた)",
+    "types": [
+      "あく",
+      "ノーマル"
+    ],
+    "baseId": 20,
+    "formKey": "alola"
+  },
+  {
+    "name": "ライチュウ(アローラのすがた)",
+    "types": [
+      "でんき",
+      "エスパー"
+    ],
+    "baseId": 26,
+    "formKey": "alola"
+  },
+  {
+    "name": "サンド(アローラのすがた)",
+    "types": [
+      "こおり",
+      "はがね"
+    ],
+    "baseId": 27,
+    "formKey": "alola"
+  },
+  {
+    "name": "サンドパン(アローラのすがた)",
+    "types": [
+      "こおり",
+      "はがね"
+    ],
+    "baseId": 28,
+    "formKey": "alola"
+  },
+  {
+    "name": "ロコン(アローラのすがた)",
+    "types": [
+      "こおり"
+    ],
+    "baseId": 37,
+    "formKey": "alola"
+  },
+  {
+    "name": "キュウコン(アローラのすがた)",
+    "types": [
+      "こおり",
+      "フェアリー"
+    ],
+    "baseId": 38,
+    "formKey": "alola"
+  },
+  {
+    "name": "ディグダ(アローラのすがた)",
+    "types": [
+      "じめん",
+      "はがね"
+    ],
+    "baseId": 50,
+    "formKey": "alola"
+  },
+  {
+    "name": "ダグトリオ(アローラのすがた)",
+    "types": [
+      "じめん",
+      "はがね"
+    ],
+    "baseId": 51,
+    "formKey": "alola"
+  },
+  {
+    "name": "ニャース(アローラのすがた)",
+    "types": [
+      "あく"
+    ],
+    "baseId": 52,
+    "formKey": "alola"
+  },
+  {
+    "name": "ニャース(ガラルのすがた)",
+    "types": [
+      "はがね"
+    ],
+    "baseId": 52,
+    "formKey": "galar"
+  },
+  {
+    "name": "ペルシアン(アローラのすがた)",
+    "types": [
+      "あく"
+    ],
+    "baseId": 53,
+    "formKey": "alola"
+  },
+  {
+    "name": "ガーディ(ヒスイのすがた)",
+    "types": [
+      "ほのお",
+      "いわ"
+    ],
+    "baseId": 58,
+    "formKey": "hisui"
+  },
+  {
+    "name": "ウインディ(ヒスイのすがた)",
+    "types": [
+      "ほのお",
+      "いわ"
+    ],
+    "baseId": 59,
+    "formKey": "hisui"
+  },
+  {
+    "name": "イシツブテ(アローラのすがた)",
+    "types": [
+      "いわ",
+      "でんき"
+    ],
+    "baseId": 74,
+    "formKey": "alola"
+  },
+  {
+    "name": "ゴローン(アローラのすがた)",
+    "types": [
+      "いわ",
+      "でんき"
+    ],
+    "baseId": 75,
+    "formKey": "alola"
+  },
+  {
+    "name": "ゴローニャ(アローラのすがた)",
+    "types": [
+      "いわ",
+      "でんき"
+    ],
+    "baseId": 76,
+    "formKey": "alola"
+  },
+  {
+    "name": "ポニータ(ガラルのすがた)",
+    "types": [
+      "エスパー"
+    ],
+    "baseId": 77,
+    "formKey": "galar"
+  },
+  {
+    "name": "ギャロップ(ガラルのすがた)",
+    "types": [
+      "エスパー",
+      "フェアリー"
+    ],
+    "baseId": 78,
+    "formKey": "galar"
+  },
+  {
+    "name": "ヤドン(ガラルのすがた)",
+    "types": [
+      "エスパー"
+    ],
+    "baseId": 79,
+    "formKey": "galar"
+  },
+  {
+    "name": "ヤドラン(ガラルのすがた)",
+    "types": [
+      "どく",
+      "エスパー"
+    ],
+    "baseId": 80,
+    "formKey": "galar"
+  },
+  {
+    "name": "カモネギ(ガラルのすがた)",
+    "types": [
+      "かくとう"
+    ],
+    "baseId": 83,
+    "formKey": "galar"
+  },
+  {
+    "name": "ベトベター(アローラのすがた)",
+    "types": [
+      "どく",
+      "あく"
+    ],
+    "baseId": 88,
+    "formKey": "alola"
+  },
+  {
+    "name": "ベトベトン(アローラのすがた)",
+    "types": [
+      "どく",
+      "あく"
+    ],
+    "baseId": 89,
+    "formKey": "alola"
+  },
+  {
+    "name": "ビリリダマ(ヒスイのすがた)",
+    "types": [
+      "でんき",
+      "くさ"
+    ],
+    "baseId": 100,
+    "formKey": "hisui"
+  },
+  {
+    "name": "マルマイン(ヒスイのすがた)",
+    "types": [
+      "でんき",
+      "くさ"
+    ],
+    "baseId": 101,
+    "formKey": "hisui"
+  },
+  {
+    "name": "ナッシー(アローラのすがた)",
+    "types": [
+      "くさ",
+      "ドラゴン"
+    ],
+    "baseId": 103,
+    "formKey": "alola"
+  },
+  {
+    "name": "ガラガラ(アローラのすがた)",
+    "types": [
+      "ほのお",
+      "ゴースト"
+    ],
+    "baseId": 105,
+    "formKey": "alola"
+  },
+  {
+    "name": "マタドガス(ガラルのすがた)",
+    "types": [
+      "どく",
+      "フェアリー"
+    ],
+    "baseId": 110,
+    "formKey": "galar"
+  },
+  {
+    "name": "バリヤード(ガラルのすがた)",
+    "types": [
+      "こおり",
+      "エスパー"
+    ],
+    "baseId": 122,
+    "formKey": "galar"
+  },
+  {
+    "name": "ケンタロス(パルデアのすがた・コンバット種)",
+    "types": [
+      "かくとう"
+    ],
+    "baseId": 128,
+    "formKey": "paldea-combat-breed"
+  },
+  {
+    "name": "ケンタロス(パルデアのすがた・ブレイズ種)",
+    "types": [
+      "かくとう",
+      "ほのお"
+    ],
+    "baseId": 128,
+    "formKey": "paldea-blaze-breed"
+  },
+  {
+    "name": "ケンタロス(パルデアのすがた・ウォーター種)",
+    "types": [
+      "かくとう",
+      "みず"
+    ],
+    "baseId": 128,
+    "formKey": "paldea-aqua-breed"
+  },
+  {
+    "name": "フリーザー(ガラルのすがた)",
+    "types": [
+      "エスパー",
+      "ひこう"
+    ],
+    "baseId": 144,
+    "formKey": "galar"
+  },
+  {
+    "name": "サンダー(ガラルのすがた)",
+    "types": [
+      "かくとう",
+      "ひこう"
+    ],
+    "baseId": 145,
+    "formKey": "galar"
+  },
+  {
+    "name": "ファイヤー(ガラルのすがた)",
+    "types": [
+      "あく",
+      "ひこう"
+    ],
+    "baseId": 146,
+    "formKey": "galar"
+  },
+  {
+    "name": "バクフーン(ヒスイのすがた)",
+    "types": [
+      "ほのお",
+      "ゴースト"
+    ],
+    "baseId": 157,
+    "formKey": "hisui"
+  },
+  {
+    "name": "ウパー(パルデアのすがた)",
+    "types": [
+      "どく",
+      "じめん"
+    ],
+    "baseId": 194,
+    "formKey": "paldea"
+  },
+  {
+    "name": "ヤドキング(ガラルのすがた)",
+    "types": [
+      "どく",
+      "エスパー"
+    ],
+    "baseId": 199,
+    "formKey": "galar"
+  },
+  {
+    "name": "ハリーセン(ヒスイのすがた)",
+    "types": [
+      "あく",
+      "どく"
+    ],
+    "baseId": 211,
+    "formKey": "hisui"
+  },
+  {
+    "name": "ニューラ(ヒスイのすがた)",
+    "types": [
+      "かくとう",
+      "どく"
+    ],
+    "baseId": 215,
+    "formKey": "hisui"
+  },
+  {
+    "name": "サニーゴ(ガラルのすがた)",
+    "types": [
+      "ゴースト"
+    ],
+    "baseId": 222,
+    "formKey": "galar"
+  },
+  {
+    "name": "ジグザグマ(ガラルのすがた)",
+    "types": [
+      "あく",
+      "ノーマル"
+    ],
+    "baseId": 263,
+    "formKey": "galar"
+  },
+  {
+    "name": "マッスグマ(ガラルのすがた)",
+    "types": [
+      "あく",
+      "ノーマル"
+    ],
+    "baseId": 264,
+    "formKey": "galar"
+  },
+  {
+    "name": "ヒートロトム",
+    "types": [
+      "でんき",
+      "ほのお"
+    ],
+    "baseId": 479,
+    "formKey": "heat"
+  },
+  {
+    "name": "ウォッシュロトム",
+    "types": [
+      "でんき",
+      "みず"
+    ],
+    "baseId": 479,
+    "formKey": "wash"
+  },
+  {
+    "name": "フロストロトム",
+    "types": [
+      "でんき",
+      "こおり"
+    ],
+    "baseId": 479,
+    "formKey": "frost"
+  },
+  {
+    "name": "スピンロトム",
+    "types": [
+      "でんき",
+      "ひこう"
+    ],
+    "baseId": 479,
+    "formKey": "fan"
+  },
+  {
+    "name": "カットロトム",
+    "types": [
+      "でんき",
+      "くさ"
+    ],
+    "baseId": 479,
+    "formKey": "mow"
+  },
+  {
+    "name": "ダイケンキ(ヒスイのすがた)",
+    "types": [
+      "みず",
+      "あく"
+    ],
+    "baseId": 503,
+    "formKey": "hisui"
+  },
+  {
+    "name": "ドレディア(ヒスイのすがた)",
+    "types": [
+      "くさ",
+      "かくとう"
+    ],
+    "baseId": 549,
+    "formKey": "hisui"
+  },
+  {
+    "name": "ダルマッカ(ガラルのすがた)",
+    "types": [
+      "こおり"
+    ],
+    "baseId": 554,
+    "formKey": "galar"
+  },
+  {
+    "name": "デスマス(ガラルのすがた)",
+    "types": [
+      "じめん",
+      "ゴースト"
+    ],
+    "baseId": 562,
+    "formKey": "galar"
+  },
+  {
+    "name": "ゾロア(ヒスイのすがた)",
+    "types": [
+      "ノーマル",
+      "ゴースト"
+    ],
+    "baseId": 570,
+    "formKey": "hisui"
+  },
+  {
+    "name": "ゾロアーク(ヒスイのすがた)",
+    "types": [
+      "ノーマル",
+      "ゴースト"
+    ],
+    "baseId": 571,
+    "formKey": "hisui"
+  },
+  {
+    "name": "マッギョ(ガラルのすがた)",
+    "types": [
+      "じめん",
+      "はがね"
+    ],
+    "baseId": 618,
+    "formKey": "galar"
+  },
+  {
+    "name": "ウォーグル(ヒスイのすがた)",
+    "types": [
+      "エスパー",
+      "ひこう"
+    ],
+    "baseId": 628,
+    "formKey": "hisui"
+  },
+  {
+    "name": "ヌメイル(ヒスイのすがた)",
+    "types": [
+      "はがね",
+      "ドラゴン"
+    ],
+    "baseId": 705,
+    "formKey": "hisui"
+  },
+  {
+    "name": "ヌメルゴン(ヒスイのすがた)",
+    "types": [
+      "はがね",
+      "ドラゴン"
+    ],
+    "baseId": 706,
+    "formKey": "hisui"
+  },
+  {
+    "name": "クレベース(ヒスイのすがた)",
+    "types": [
+      "こおり",
+      "いわ"
+    ],
+    "baseId": 713,
+    "formKey": "hisui"
+  },
+  {
+    "name": "ジュナイパー(ヒスイのすがた)",
+    "types": [
+      "くさ",
+      "かくとう"
+    ],
+    "baseId": 724,
+    "formKey": "hisui"
+  }
+]
