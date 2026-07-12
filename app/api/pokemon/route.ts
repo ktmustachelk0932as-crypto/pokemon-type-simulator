@@ -21,6 +21,26 @@ function toKatakana(str: string): string {
   });
 }
 
+// データはビルド成果物で実行中は不変のため、初回リクエスト時に一度だけ読み込む
+let cachedPokemonData: Pokemon[] | null = null;
+
+function loadPokemonData(): Pokemon[] {
+  if (cachedPokemonData) return cachedPokemonData;
+
+  // JSONファイルを読み込む（ベースデータ + リージョンフォーム）
+  const filePath = join(process.cwd(), 'src', 'data', 'pokemon.json');
+  const fileContents = readFileSync(filePath, 'utf8');
+  const baseData: Pokemon[] = JSON.parse(fileContents);
+
+  const variantsFilePath = join(process.cwd(), 'src', 'data', 'pokemon-regional-forms.json');
+  const variantsData: Pokemon[] = existsSync(variantsFilePath)
+    ? JSON.parse(readFileSync(variantsFilePath, 'utf8'))
+    : [];
+
+  cachedPokemonData = [...baseData, ...variantsData];
+  return cachedPokemonData;
+}
+
 /**
  * ポケモン名で検索するAPI
  * GET /api/pokemon?q=カイ
@@ -33,17 +53,7 @@ export async function GET(request: Request) {
   if (!query) return NextResponse.json([]);
 
   try {
-    // JSONファイルを読み込む（ベースデータ + リージョンフォーム）
-    const filePath = join(process.cwd(), 'src', 'data', 'pokemon.json');
-    const fileContents = readFileSync(filePath, 'utf8');
-    const baseData: Pokemon[] = JSON.parse(fileContents);
-
-    const variantsFilePath = join(process.cwd(), 'src', 'data', 'pokemon-regional-forms.json');
-    const variantsData: Pokemon[] = existsSync(variantsFilePath)
-      ? JSON.parse(readFileSync(variantsFilePath, 'utf8'))
-      : [];
-
-    const pokemonData: Pokemon[] = [...baseData, ...variantsData];
+    const pokemonData = loadPokemonData();
 
     // 検索ワードをカタカナに変換（ひらがな入力にも対応）
     const normalizedQuery = toKatakana(query);
