@@ -5,7 +5,23 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export type PokemonSuggestion = { name: string; types: string[] };
+export type PokemonAbility = { name: string; hidden: boolean; description?: string };
+
+export type PokemonStats = {
+  hp: number;
+  attack: number;
+  defense: number;
+  spAttack: number;
+  spDefense: number;
+  speed: number;
+};
+
+export type PokemonSuggestion = {
+  name: string;
+  types: string[];
+  abilities?: PokemonAbility[];
+  stats?: PokemonStats;
+};
 
 /** ポケモン名のインクリメンタル検索（300msデバウンス）を担うフック */
 export function usePokemonSearch() {
