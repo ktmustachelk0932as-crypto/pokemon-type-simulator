@@ -9,7 +9,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { categoryLabels, TYPE_COLORS, type EffectivenessResult } from "@/lib/type-chart";
+import {
+  categoryBaseMultipliers,
+  categoryLabels,
+  TYPE_COLORS,
+  type EffectivenessResult,
+} from "@/lib/type-chart";
 
 type EffectivenessResultsProps = {
   groupedResults: Record<string, EffectivenessResult[]>;
@@ -47,6 +52,12 @@ export function EffectivenessResults({
                         } ${r.type === "あく" ? "text-white" : "text-slate-900"}`}
                     >
                       {r.type}
+                      {/* 特性補正でカテゴリ基準倍率からずれた場合のみ実倍率を表示 */}
+                      {r.multiplier !== categoryBaseMultipliers[cat] && (
+                        <span className="block text-[10px] font-semibold opacity-80">
+                          ×{r.multiplier}
+                        </span>
+                      )}
                     </div>
                   ))}
                 </div>

@@ -13,7 +13,7 @@ type TypeSelectorProps = {
 export function TypeSelector({ selectedTypes, onToggleType }: TypeSelectorProps) {
   return (
     <section className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow border border-slate-200 dark:border-slate-700">
-      <h2 className="text-lg font-bold mb-4">相手のタイプ</h2>
+      <h2 className="text-lg font-bold mb-4">調べたいポケモンのタイプ</h2>
       <div className="flex flex-wrap gap-2">
         {TYPES.map((type) => (
           <button

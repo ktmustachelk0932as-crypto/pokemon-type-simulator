@@ -51,30 +51,101 @@ export const categoryLabels: Record<string, string> = {
   "triple-resistant-immune": "効果がないようだ…",
 };
 
+// カテゴリごとの基準倍率。特性補正でこの値からずれた場合のみチップに実倍率を表示する
+export const categoryBaseMultipliers: Record<string, number> = {
+  "double-super-effective": 4.0,
+  "super-effective": 2.0,
+  "neutral": 1.0,
+  "resistant": 0.5,
+  "double-resistant": 0.25,
+  "triple-resistant-immune": 0,
+};
+
+// タイプ相性に影響する防御側特性の補正表。
+// immuneTo: 該当攻撃タイプを無効化（倍率0）
+// resist: 該当攻撃タイプの倍率に乗算する係数（1超なら弱点化。例: もふもふのほのお2倍）
+// superEffectiveScale: 合計倍率が2.0以上（バツグン）のときに乗算する係数
+// onlySuperEffective: 合計倍率が2.0未満の攻撃をすべて無効化（ふしぎなまもり）
+// わざ単位で判定される特性（ぼうだん・ぼうじん・かぜのり等）はタイプ相性では表現できないため対象外
+type AbilityEffect = {
+  immuneTo?: string[];
+  resist?: Record<string, number>;
+  superEffectiveScale?: number;
+  onlySuperEffective?: boolean;
+};
+
+export const ABILITY_EFFECTS: Record<string, AbilityEffect> = {
+  ふゆう: { immuneTo: ["じめん"] },
+  もらいび: { immuneTo: ["ほのお"] },
+  ちょすい: { immuneTo: ["みず"] },
+  よびみず: { immuneTo: ["みず"] },
+  ちくでん: { immuneTo: ["でんき"] },
+  でんきエンジン: { immuneTo: ["でんき"] },
+  ひらいしん: { immuneTo: ["でんき"] },
+  そうしょく: { immuneTo: ["くさ"] },
+  こんがりボディ: { immuneTo: ["ほのお"] },
+  どしょく: { immuneTo: ["じめん"] },
+  かんそうはだ: { immuneTo: ["みず"], resist: { ほのお: 1.25 } },
+  // おわりのだいち・はじまりのうみは天候による無効化だが、持ち主が場にいる限り常時有効
+  おわりのだいち: { immuneTo: ["みず"] },
+  はじまりのうみ: { immuneTo: ["ほのお"] },
+  あついしぼう: { resist: { ほのお: 0.5, こおり: 0.5 } },
+  たいねつ: { resist: { ほのお: 0.5 } },
+  きよめのしお: { resist: { ゴースト: 0.5 } },
+  すいほう: { resist: { ほのお: 0.5 } },
+  もふもふ: { resist: { ほのお: 2.0 } },
+  // デルタストリームは「ひこうタイプへの弱点を等倍化」する天候効果。持ち主が
+  // メガレックウザ（ドラゴン/ひこう）のみのため、resistで全タイプの結果が厳密に一致する
+  デルタストリーム: { resist: { こおり: 0.5, でんき: 0.5, いわ: 0.5 } },
+  フィルター: { superEffectiveScale: 0.75 },
+  ハードロック: { superEffectiveScale: 0.75 },
+  プリズムアーマー: { superEffectiveScale: 0.75 },
+  ふしぎなまもり: { onlySuperEffective: true },
+};
+
+/** タイプ相性に影響する特性かどうか */
+export function abilityAffectsMatchup(ability: string): boolean {
+  return ability in ABILITY_EFFECTS;
+}
+
 export type EffectivenessResult = {
   type: string;
   multiplier: number;
   category: string;
 };
 
-/** 複数の防御側タイプに対する攻撃側タイプの合計倍率（各倍率の積） */
-export function getMultiplier(defenseTypes: string[], attackType: string): number {
-  return defenseTypes.reduce((acc, defType) => acc * (CHART[attackType]?.[defType] ?? NE), 1.0);
+/** 複数の防御側タイプに対する攻撃側タイプの合計倍率（各倍率の積、特性補正込み） */
+export function getMultiplier(defenseTypes: string[], attackType: string, ability?: string | null): number {
+  let multiplier = defenseTypes.reduce((acc, defType) => acc * (CHART[attackType]?.[defType] ?? NE), 1.0);
+
+  const effect = ability ? ABILITY_EFFECTS[ability] : undefined;
+  if (!effect) return multiplier;
+
+  if (effect.immuneTo?.includes(attackType)) return 0;
+  if (effect.resist?.[attackType] !== undefined) multiplier *= effect.resist[attackType];
+  if (effect.superEffectiveScale !== undefined && multiplier >= SE) multiplier *= effect.superEffectiveScale;
+  if (effect.onlySuperEffective && multiplier < SE) return 0;
+
+  return multiplier;
 }
 
+// 特性補正により2の冪以外の倍率（×1.5、×3、×0.75等）が生じるため、境界一致ではなく範囲で判定する
 export function getEffectivenessCategory(multiplier: number): string {
   if (multiplier >= 4.0) return "double-super-effective";
-  if (multiplier >= 2.0) return "super-effective";
+  if (multiplier > 1.0) return "super-effective";
   if (multiplier === 1.0) return "neutral";
   if (multiplier >= 0.5) return "resistant";
-  if (multiplier >= 0.25) return "double-resistant";
+  if (multiplier > 0) return "double-resistant";
   return "triple-resistant-immune";
 }
 
 /** 全18タイプの攻撃側わざの効果倍率を計算し、カテゴリごとにグループ化する */
-export function groupResultsByCategory(defenseTypes: string[]): Record<string, EffectivenessResult[]> {
+export function groupResultsByCategory(
+  defenseTypes: string[],
+  ability?: string | null
+): Record<string, EffectivenessResult[]> {
   const results = TYPES.map((attackType) => {
-    const multiplier = getMultiplier(defenseTypes, attackType);
+    const multiplier = getMultiplier(defenseTypes, attackType, ability);
     return { type: attackType, multiplier, category: getEffectivenessCategory(multiplier) };
   });
 
@@ -85,8 +156,8 @@ export function groupResultsByCategory(defenseTypes: string[]): Record<string, E
 }
 
 /** 弱点（バツグン以上）が存在する場合に自動展開すべきアコーディオンのカテゴリ一覧を返す */
-export function getWeaknessCategories(defenseTypes: string[]): string[] {
+export function getWeaknessCategories(defenseTypes: string[], ability?: string | null): string[] {
   const targets = ["double-super-effective", "super-effective"];
-  const hasWeakness = TYPES.some((attackType) => getMultiplier(defenseTypes, attackType) >= 2.0);
+  const hasWeakness = TYPES.some((attackType) => getMultiplier(defenseTypes, attackType, ability) > 1.0);
   return hasWeakness ? targets : [];
 }

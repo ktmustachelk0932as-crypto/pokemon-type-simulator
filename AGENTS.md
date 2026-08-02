@@ -4,7 +4,7 @@ This file provides guidance to AI coding agents (Claude Code, etc.) when working
 
 ## Project Overview
 
-ポケモンのタイプ相性を計算する、日本語UIのNext.js（App Router）アプリ。ユーザーは防御側のタイプを最大2つ選択（またはポケモン名を検索してタイプを自動入力）でき、全18タイプの攻撃側わざがどれだけ効果的かを効果倍率カテゴリ（×4、×2、×1、×0.5、×0.25、無効）ごとにグループ表示する。
+ポケモンのタイプ相性を計算する、日本語UIのNext.js（App Router）アプリ。ユーザーは防御側のタイプを最大2つ選択（またはポケモン名を検索してタイプを自動入力）でき、全18タイプの攻撃側わざがどれだけ効果的かを効果倍率カテゴリ（×4、×2、×1、×0.5、×0.25、無効）ごとにグループ表示する。ポケモン名で検索した場合は特性（隠れ特性含む）と種族値バーメーターも表示し、タイプ相性に影響する特性（ふゆう・もらいび・フィルター等、`lib/type-chart.ts`の`ABILITY_EFFECTS`に登録されているもの）はクリックで相性計算に適用できる。特性補正により2の冪以外の倍率（×1.5、×3、×0.75等）が生じるため、カテゴリ判定は範囲ベースで行い、基準倍率とずれたタイプチップには実倍率を併記する。
 
 ## Directory Structure
 
@@ -30,9 +30,11 @@ npm run fetch-pokemon   # PokeAPIからsrc/data/pokemon.jsonを更新
 
 このリポジトリにはテストスイートは設定されていない。
 
-`fetch-pokemon`（`src/data/fetch-pokemon.mjs`）はNext.jsのビルドには含まれない独立したNode.jsスクリプト。PokeAPIから現在のポケモン総数を取得し、既存の`pokemon.json`配列の長さと比較して`既存件数 + 1`以降のIDのみを取得する（既存データがID順に連続した先頭部分であることが前提で、欠番の補完は行わない）。1匹あたり2回のPokeAPI呼び出し（species + types）ごとに100msスリープするため、フル取得には数分かかる。
+`fetch-pokemon`（`src/data/fetch-pokemon.mjs`）はNext.jsのビルドには含まれない独立したNode.jsスクリプト。PokeAPIから現在のポケモン総数を取得し、既存の`pokemon.json`配列の長さと比較して`既存件数 + 1`以降のIDのみを取得する（既存データがID順に連続した先頭部分であることが前提で、欠番の補完は行わない）。1匹あたり2回のPokeAPI呼び出し（species + types/abilities/stats）ごとに100msスリープするため、フル取得には数分かかる。
 
-アローラ・ガラル・ヒスイ・パルデアのリージョンフォームやロトムの家電フォルムなど、同じ図鑑番号でもタイプが異なる代替フォルム（`fetch-pokemon.mjs`内の`ALT_FORM_MAP`に登録されているもののみ）は`pokemon.json`とは別に`pokemon-regional-forms.json`へ保存する。`pokemon.json`側の差分取得ロジック・前提（配列長=次に取得すべき図鑑番号）には一切影響しない。`pokemon-regional-forms.json`が存在しない場合のみ、既存の全種族に対して一度きりのバックフィル（`pokemon-species`の再取得）が走る。2回目以降は新規追加分の種族のみ確認する。対象フォルムを追加する場合は`ALT_FORM_MAP`にキー（種族の英語名を除いた接尾辞、例: `heat`や`paldea-combat-breed`）を追記する。
+各エントリには`types`に加えて`abilities`（`{name, hidden}`の配列、日本語名）と`stats`（HP/こうげき/ぼうぎょ/とくこう/とくぼう/すばやさの種族値）を保存する。特性の日本語名は`/ability/{slug}`から取得し、`src/data/ability-names.json`（英語スラッグ→日本語名のマップ、コミット対象）にキャッシュするため、未知の特性が現れたときのみ追加のAPI呼び出しが発生する。同じレスポンスから日本語の解説文（フレーバーテキスト。漢字表記jaを優先、最新バージョンを採用）も抽出し、`src/data/ability-descriptions.json`（日本語特性名→解説文のマップ、コミット対象）にキャッシュする。解説文が未取得の特性はスクリプト実行時にバックフィルされ、`app/api/pokemon/route.ts`が検索レスポンスの各特性に`description`として付加する。`abilities`/`stats`フィールドを持たない既存エントリ（通常・リージョンフォームとも）は実行時に自動でバックフィルされる（`/pokemon/{id}`の再取得。連番不変条件には影響しない）。
+
+アローラ・ガラル・ヒスイ・パルデアのリージョンフォーム、ロトムの家電フォルム、デオキシスのフォルム、霊獣フォルム、性別で種族値・特性が異なる種のメス（イエッサン等）、メガシンカ（Legends Z-A追加分含む）・ゲンシカイキなど、同じ図鑑番号の代替フォルム（`fetch-pokemon.mjs`内の`ALT_FORM_MAP`に登録されているもののみ）は`pokemon.json`とは別に`pokemon-regional-forms.json`へ保存する。表示名は`ALT_FORM_MAP`の`prefix`/`suffix`/`label`（`${prefix}${種族名}${suffix}(${label})`、例: メガリザードンX）または`fullName`（例: ヒートロトム）で組み立てる。タイプがベースと同じでも種族値・特性が異なるフォルム（霊獣・デオキシス等）があるため、`ALT_FORM_MAP`に登録されたフォルムはタイプの異同にかかわらず採用する。`pokemon.json`側の差分取得ロジック・前提（配列長=次に取得すべき図鑑番号）には一切影響しない。対象フォルムを追加する場合は`ALT_FORM_MAP`にキー（種族の英語名を除いた接尾辞、例: `heat`や`paldea-combat-breed`）を追記し、`FORM_SCAN_VERSION`を+1する。スクリプトは`src/data/variant-scan-meta.json`に保存されたバージョンと比較し、更新を検出した場合のみ既存の全種族に対する再スキャン（`pokemon-species`の再取得、`baseId`+`formKey`で重複排除される冪等な処理）を実行する。通常の実行では新規追加分の種族のみ確認する。
 
 ## Code Style
 
