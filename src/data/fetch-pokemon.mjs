@@ -14,9 +14,10 @@ const TYPE_MAP = {
   steel: "はがね", fairy: "フェアリー"
 };
 
-// タイプが変化する代替フォルム（リージョンフォーム・ロトムの家電フォルム等）の判定に使う
+// 代替フォルム（リージョンフォーム・ロトムの家電フォルム・メガシンカ等）の判定に使う
 // 「種族名を除いた接尾辞」→表示名の対応表。
-// label: `${ベース日本語名}(${label})` の形で表示名を組み立てる（例: ロコン(アローラのすがた)）
+// prefix/suffix/label: `${prefix}${ベース日本語名}${suffix}(${label})` の形で表示名を
+//   組み立てる（例: ロコン(アローラのすがた)、メガリザードンX、メガニャオニクス(メスのすがた)）
 // fullName: 種族名と結合せずそのまま表示名として使う（例: ヒートロトム）
 const ALT_FORM_MAP = {
   // リージョンフォーム
@@ -44,11 +45,27 @@ const ALT_FORM_MAP = {
   // 性別で種族値・特性が異なる種のメス（イエッサン・イダイトウ・パフュートン・ニャオニクス）。
   // オスはデフォルトの姿として pokemon.json 側が担う
   female: { label: "メスのすがた" },
+  // メガシンカ（例: メガフシギバナ、メガリザードンX、メガルカリオZ）
+  mega: { prefix: "メガ" },
+  "mega-x": { prefix: "メガ", suffix: "X" },
+  "mega-y": { prefix: "メガ", suffix: "Y" },
+  "mega-z": { prefix: "メガ", suffix: "Z" },
+  // ニャオニクスのメガシンカ（性別ごと）
+  "male-mega": { prefix: "メガ", label: "オスのすがた" },
+  "female-mega": { prefix: "メガ", label: "メスのすがた" },
+  // シャリタツのメガシンカ（姿ごと）
+  "curly-mega": { prefix: "メガ", label: "そったすがた" },
+  "droopy-mega": { prefix: "メガ", label: "たれたすがた" },
+  "stretchy-mega": { prefix: "メガ", label: "のびたすがた" },
+  // マギアナのメガシンカ（500年前の色）
+  "original-mega": { prefix: "メガ", label: "５００ねんまえのいろ" },
+  // ゲンシカイキ（ゲンシグラードン・ゲンシカイオーガ）
+  primal: { prefix: "ゲンシ" },
 };
 
 // ALT_FORM_MAPの内容を変えたらこの値を+1する。既取得の全種族に対する
 // 代替フォルムの再スキャンが一度だけ走る（variant-scan-meta.jsonと比較）
-const FORM_SCAN_VERSION = 2;
+const FORM_SCAN_VERSION = 3;
 const VARIANT_SCAN_META_PATH = './src/data/variant-scan-meta.json';
 
 // PokeAPIのstat名 → pokemon.jsonのstatsキーの対応表
@@ -265,7 +282,8 @@ async function extractRegionalVariants(species, baseJpName) {
       const { abilities, stats } = await extractAbilitiesAndStats(variantPokemon);
 
       results.push({
-        name: formInfo.fullName || `${baseJpName}(${formInfo.label})`,
+        name: formInfo.fullName
+          || `${formInfo.prefix || ""}${baseJpName}${formInfo.suffix || ""}${formInfo.label ? `(${formInfo.label})` : ""}`,
         types,
         abilities,
         stats,

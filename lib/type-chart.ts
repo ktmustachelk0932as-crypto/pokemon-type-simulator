@@ -63,13 +63,15 @@ export const categoryBaseMultipliers: Record<string, number> = {
 
 // タイプ相性に影響する防御側特性の補正表。
 // immuneTo: 該当攻撃タイプを無効化（倍率0）
-// resist: 該当攻撃タイプの倍率に乗算する係数
+// resist: 該当攻撃タイプの倍率に乗算する係数（1超なら弱点化。例: もふもふのほのお2倍）
 // superEffectiveScale: 合計倍率が2.0以上（バツグン）のときに乗算する係数
-// わざ単位で判定される特性（ぼうだん・ぼうじん等）はタイプ相性では表現できないため対象外
+// onlySuperEffective: 合計倍率が2.0未満の攻撃をすべて無効化（ふしぎなまもり）
+// わざ単位で判定される特性（ぼうだん・ぼうじん・かぜのり等）はタイプ相性では表現できないため対象外
 type AbilityEffect = {
   immuneTo?: string[];
   resist?: Record<string, number>;
   superEffectiveScale?: number;
+  onlySuperEffective?: boolean;
 };
 
 export const ABILITY_EFFECTS: Record<string, AbilityEffect> = {
@@ -81,12 +83,24 @@ export const ABILITY_EFFECTS: Record<string, AbilityEffect> = {
   でんきエンジン: { immuneTo: ["でんき"] },
   ひらいしん: { immuneTo: ["でんき"] },
   そうしょく: { immuneTo: ["くさ"] },
+  こんがりボディ: { immuneTo: ["ほのお"] },
+  どしょく: { immuneTo: ["じめん"] },
+  かんそうはだ: { immuneTo: ["みず"], resist: { ほのお: 1.25 } },
+  // おわりのだいち・はじまりのうみは天候による無効化だが、持ち主が場にいる限り常時有効
+  おわりのだいち: { immuneTo: ["みず"] },
+  はじまりのうみ: { immuneTo: ["ほのお"] },
   あついしぼう: { resist: { ほのお: 0.5, こおり: 0.5 } },
   たいねつ: { resist: { ほのお: 0.5 } },
   きよめのしお: { resist: { ゴースト: 0.5 } },
+  すいほう: { resist: { ほのお: 0.5 } },
+  もふもふ: { resist: { ほのお: 2.0 } },
+  // デルタストリームは「ひこうタイプへの弱点を等倍化」する天候効果。持ち主が
+  // メガレックウザ（ドラゴン/ひこう）のみのため、resistで全タイプの結果が厳密に一致する
+  デルタストリーム: { resist: { こおり: 0.5, でんき: 0.5, いわ: 0.5 } },
   フィルター: { superEffectiveScale: 0.75 },
   ハードロック: { superEffectiveScale: 0.75 },
   プリズムアーマー: { superEffectiveScale: 0.75 },
+  ふしぎなまもり: { onlySuperEffective: true },
 };
 
 /** タイプ相性に影響する特性かどうか */
@@ -110,6 +124,7 @@ export function getMultiplier(defenseTypes: string[], attackType: string, abilit
   if (effect.immuneTo?.includes(attackType)) return 0;
   if (effect.resist?.[attackType] !== undefined) multiplier *= effect.resist[attackType];
   if (effect.superEffectiveScale !== undefined && multiplier >= SE) multiplier *= effect.superEffectiveScale;
+  if (effect.onlySuperEffective && multiplier < SE) return 0;
 
   return multiplier;
 }

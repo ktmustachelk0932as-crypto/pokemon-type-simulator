@@ -2010,5 +2010,2192 @@
     },
     "baseId": 916,
     "formKey": "female"
+  },
+  {
+    "name": "メガフシギバナ",
+    "types": [
+      "くさ",
+      "どく"
+    ],
+    "abilities": [
+      {
+        "name": "あついしぼう",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 100,
+      "defense": 123,
+      "spAttack": 122,
+      "spDefense": 120,
+      "speed": 80
+    },
+    "baseId": 3,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガリザードンX",
+    "types": [
+      "ほのお",
+      "ドラゴン"
+    ],
+    "abilities": [
+      {
+        "name": "かたいツメ",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 78,
+      "attack": 130,
+      "defense": 111,
+      "spAttack": 130,
+      "spDefense": 85,
+      "speed": 100
+    },
+    "baseId": 6,
+    "formKey": "mega-x"
+  },
+  {
+    "name": "メガリザードンY",
+    "types": [
+      "ほのお",
+      "ひこう"
+    ],
+    "abilities": [
+      {
+        "name": "ひでり",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 78,
+      "attack": 104,
+      "defense": 78,
+      "spAttack": 159,
+      "spDefense": 115,
+      "speed": 100
+    },
+    "baseId": 6,
+    "formKey": "mega-y"
+  },
+  {
+    "name": "メガカメックス",
+    "types": [
+      "みず"
+    ],
+    "abilities": [
+      {
+        "name": "メガランチャー",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 79,
+      "attack": 103,
+      "defense": 120,
+      "spAttack": 135,
+      "spDefense": 115,
+      "speed": 78
+    },
+    "baseId": 9,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガスピアー",
+    "types": [
+      "むし",
+      "どく"
+    ],
+    "abilities": [
+      {
+        "name": "てきおうりょく",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 150,
+      "defense": 40,
+      "spAttack": 15,
+      "spDefense": 80,
+      "speed": 145
+    },
+    "baseId": 15,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガピジョット",
+    "types": [
+      "ノーマル",
+      "ひこう"
+    ],
+    "abilities": [
+      {
+        "name": "ノーガード",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 83,
+      "attack": 80,
+      "defense": 80,
+      "spAttack": 135,
+      "spDefense": 80,
+      "speed": 121
+    },
+    "baseId": 18,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガライチュウX",
+    "types": [
+      "でんき"
+    ],
+    "abilities": [
+      {
+        "name": "エレキメイカー",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 135,
+      "defense": 95,
+      "spAttack": 90,
+      "spDefense": 95,
+      "speed": 110
+    },
+    "baseId": 26,
+    "formKey": "mega-x"
+  },
+  {
+    "name": "メガライチュウY",
+    "types": [
+      "でんき"
+    ],
+    "abilities": [
+      {
+        "name": "ノーガード",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 100,
+      "defense": 55,
+      "spAttack": 160,
+      "spDefense": 80,
+      "speed": 130
+    },
+    "baseId": 26,
+    "formKey": "mega-y"
+  },
+  {
+    "name": "メガピクシー",
+    "types": [
+      "フェアリー",
+      "ひこう"
+    ],
+    "abilities": [
+      {
+        "name": "マジックミラー",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 95,
+      "attack": 80,
+      "defense": 93,
+      "spAttack": 135,
+      "spDefense": 110,
+      "speed": 70
+    },
+    "baseId": 36,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガフーディン",
+    "types": [
+      "エスパー"
+    ],
+    "abilities": [
+      {
+        "name": "トレース",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 55,
+      "attack": 50,
+      "defense": 65,
+      "spAttack": 175,
+      "spDefense": 105,
+      "speed": 150
+    },
+    "baseId": 65,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガウツボット",
+    "types": [
+      "くさ",
+      "どく"
+    ],
+    "abilities": [
+      {
+        "name": "とびだすなかみ",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 125,
+      "defense": 85,
+      "spAttack": 135,
+      "spDefense": 95,
+      "speed": 70
+    },
+    "baseId": 71,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガヤドラン",
+    "types": [
+      "みず",
+      "エスパー"
+    ],
+    "abilities": [
+      {
+        "name": "シェルアーマー",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 95,
+      "attack": 75,
+      "defense": 180,
+      "spAttack": 130,
+      "spDefense": 80,
+      "speed": 30
+    },
+    "baseId": 80,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガゲンガー",
+    "types": [
+      "ゴースト",
+      "どく"
+    ],
+    "abilities": [
+      {
+        "name": "かげふみ",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 65,
+      "defense": 80,
+      "spAttack": 170,
+      "spDefense": 95,
+      "speed": 130
+    },
+    "baseId": 94,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガガルーラ",
+    "types": [
+      "ノーマル"
+    ],
+    "abilities": [
+      {
+        "name": "おやこあい",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 105,
+      "attack": 125,
+      "defense": 100,
+      "spAttack": 60,
+      "spDefense": 100,
+      "speed": 100
+    },
+    "baseId": 115,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガスターミー",
+    "types": [
+      "みず",
+      "エスパー"
+    ],
+    "abilities": [
+      {
+        "name": "ちからもち",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 100,
+      "defense": 105,
+      "spAttack": 130,
+      "spDefense": 105,
+      "speed": 120
+    },
+    "baseId": 121,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガカイロス",
+    "types": [
+      "むし",
+      "ひこう"
+    ],
+    "abilities": [
+      {
+        "name": "スカイスキン",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 155,
+      "defense": 120,
+      "spAttack": 65,
+      "spDefense": 90,
+      "speed": 105
+    },
+    "baseId": 127,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガギャラドス",
+    "types": [
+      "みず",
+      "あく"
+    ],
+    "abilities": [
+      {
+        "name": "かたやぶり",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 95,
+      "attack": 155,
+      "defense": 109,
+      "spAttack": 70,
+      "spDefense": 130,
+      "speed": 81
+    },
+    "baseId": 130,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガプテラ",
+    "types": [
+      "いわ",
+      "ひこう"
+    ],
+    "abilities": [
+      {
+        "name": "かたいツメ",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 135,
+      "defense": 85,
+      "spAttack": 70,
+      "spDefense": 95,
+      "speed": 150
+    },
+    "baseId": 142,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガカイリュー",
+    "types": [
+      "ドラゴン",
+      "ひこう"
+    ],
+    "abilities": [
+      {
+        "name": "マルチスケイル",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 91,
+      "attack": 124,
+      "defense": 115,
+      "spAttack": 145,
+      "spDefense": 125,
+      "speed": 100
+    },
+    "baseId": 149,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガミュウツーX",
+    "types": [
+      "エスパー",
+      "かくとう"
+    ],
+    "abilities": [
+      {
+        "name": "ふくつのこころ",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 106,
+      "attack": 190,
+      "defense": 100,
+      "spAttack": 154,
+      "spDefense": 100,
+      "speed": 130
+    },
+    "baseId": 150,
+    "formKey": "mega-x"
+  },
+  {
+    "name": "メガミュウツーY",
+    "types": [
+      "エスパー"
+    ],
+    "abilities": [
+      {
+        "name": "ふみん",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 106,
+      "attack": 150,
+      "defense": 70,
+      "spAttack": 194,
+      "spDefense": 120,
+      "speed": 140
+    },
+    "baseId": 150,
+    "formKey": "mega-y"
+  },
+  {
+    "name": "メガメガニウム",
+    "types": [
+      "くさ",
+      "フェアリー"
+    ],
+    "abilities": [
+      {
+        "name": "メガソーラー",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 92,
+      "defense": 115,
+      "spAttack": 143,
+      "spDefense": 115,
+      "speed": 80
+    },
+    "baseId": 154,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガオーダイル",
+    "types": [
+      "みず",
+      "ドラゴン"
+    ],
+    "abilities": [
+      {
+        "name": "ドラゴンスキン",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 85,
+      "attack": 160,
+      "defense": 125,
+      "spAttack": 89,
+      "spDefense": 93,
+      "speed": 78
+    },
+    "baseId": 160,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガデンリュウ",
+    "types": [
+      "でんき",
+      "ドラゴン"
+    ],
+    "abilities": [
+      {
+        "name": "かたやぶり",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 90,
+      "attack": 95,
+      "defense": 105,
+      "spAttack": 165,
+      "spDefense": 110,
+      "speed": 45
+    },
+    "baseId": 181,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガハガネール",
+    "types": [
+      "はがね",
+      "じめん"
+    ],
+    "abilities": [
+      {
+        "name": "すなのちから",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 75,
+      "attack": 125,
+      "defense": 230,
+      "spAttack": 55,
+      "spDefense": 95,
+      "speed": 30
+    },
+    "baseId": 208,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガハッサム",
+    "types": [
+      "むし",
+      "はがね"
+    ],
+    "abilities": [
+      {
+        "name": "テクニシャン",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 150,
+      "defense": 140,
+      "spAttack": 65,
+      "spDefense": 100,
+      "speed": 75
+    },
+    "baseId": 212,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガヘラクロス",
+    "types": [
+      "むし",
+      "かくとう"
+    ],
+    "abilities": [
+      {
+        "name": "スキルリンク",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 185,
+      "defense": 115,
+      "spAttack": 40,
+      "spDefense": 105,
+      "speed": 75
+    },
+    "baseId": 214,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガエアームド",
+    "types": [
+      "はがね",
+      "ひこう"
+    ],
+    "abilities": [
+      {
+        "name": "すじがねいり",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 140,
+      "defense": 110,
+      "spAttack": 40,
+      "spDefense": 100,
+      "speed": 110
+    },
+    "baseId": 227,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガヘルガー",
+    "types": [
+      "あく",
+      "ほのお"
+    ],
+    "abilities": [
+      {
+        "name": "サンパワー",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 75,
+      "attack": 90,
+      "defense": 90,
+      "spAttack": 140,
+      "spDefense": 90,
+      "speed": 115
+    },
+    "baseId": 229,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガバンギラス",
+    "types": [
+      "いわ",
+      "あく"
+    ],
+    "abilities": [
+      {
+        "name": "すなおこし",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 100,
+      "attack": 164,
+      "defense": 150,
+      "spAttack": 95,
+      "spDefense": 120,
+      "speed": 71
+    },
+    "baseId": 248,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガジュカイン",
+    "types": [
+      "くさ",
+      "ドラゴン"
+    ],
+    "abilities": [
+      {
+        "name": "ひらいしん",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 110,
+      "defense": 75,
+      "spAttack": 145,
+      "spDefense": 85,
+      "speed": 145
+    },
+    "baseId": 254,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガバシャーモ",
+    "types": [
+      "ほのお",
+      "かくとう"
+    ],
+    "abilities": [
+      {
+        "name": "かそく",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 160,
+      "defense": 80,
+      "spAttack": 130,
+      "spDefense": 80,
+      "speed": 100
+    },
+    "baseId": 257,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガラグラージ",
+    "types": [
+      "みず",
+      "じめん"
+    ],
+    "abilities": [
+      {
+        "name": "すいすい",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 100,
+      "attack": 150,
+      "defense": 110,
+      "spAttack": 95,
+      "spDefense": 110,
+      "speed": 70
+    },
+    "baseId": 260,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガサーナイト",
+    "types": [
+      "エスパー",
+      "フェアリー"
+    ],
+    "abilities": [
+      {
+        "name": "フェアリースキン",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 68,
+      "attack": 85,
+      "defense": 65,
+      "spAttack": 165,
+      "spDefense": 135,
+      "speed": 100
+    },
+    "baseId": 282,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガヤミラミ",
+    "types": [
+      "あく",
+      "ゴースト"
+    ],
+    "abilities": [
+      {
+        "name": "マジックミラー",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 85,
+      "defense": 125,
+      "spAttack": 85,
+      "spDefense": 115,
+      "speed": 20
+    },
+    "baseId": 302,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガクチート",
+    "types": [
+      "はがね",
+      "フェアリー"
+    ],
+    "abilities": [
+      {
+        "name": "ちからもち",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 105,
+      "defense": 125,
+      "spAttack": 55,
+      "spDefense": 95,
+      "speed": 50
+    },
+    "baseId": 303,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガボスゴドラ",
+    "types": [
+      "はがね"
+    ],
+    "abilities": [
+      {
+        "name": "フィルター",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 140,
+      "defense": 230,
+      "spAttack": 60,
+      "spDefense": 80,
+      "speed": 50
+    },
+    "baseId": 306,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガチャーレム",
+    "types": [
+      "かくとう",
+      "エスパー"
+    ],
+    "abilities": [
+      {
+        "name": "ヨガパワー",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 100,
+      "defense": 85,
+      "spAttack": 80,
+      "spDefense": 85,
+      "speed": 100
+    },
+    "baseId": 308,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガライボルト",
+    "types": [
+      "でんき"
+    ],
+    "abilities": [
+      {
+        "name": "いかく",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 75,
+      "defense": 80,
+      "spAttack": 135,
+      "spDefense": 80,
+      "speed": 135
+    },
+    "baseId": 310,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガサメハダー",
+    "types": [
+      "みず",
+      "あく"
+    ],
+    "abilities": [
+      {
+        "name": "がんじょうあご",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 140,
+      "defense": 70,
+      "spAttack": 110,
+      "spDefense": 65,
+      "speed": 105
+    },
+    "baseId": 319,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガバクーダ",
+    "types": [
+      "ほのお",
+      "じめん"
+    ],
+    "abilities": [
+      {
+        "name": "ちからずく",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 120,
+      "defense": 100,
+      "spAttack": 145,
+      "spDefense": 105,
+      "speed": 20
+    },
+    "baseId": 323,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガチルタリス",
+    "types": [
+      "ドラゴン",
+      "フェアリー"
+    ],
+    "abilities": [
+      {
+        "name": "フェアリースキン",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 75,
+      "attack": 110,
+      "defense": 110,
+      "spAttack": 110,
+      "spDefense": 105,
+      "speed": 80
+    },
+    "baseId": 334,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガジュペッタ",
+    "types": [
+      "ゴースト"
+    ],
+    "abilities": [
+      {
+        "name": "いたずらごころ",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 64,
+      "attack": 165,
+      "defense": 75,
+      "spAttack": 93,
+      "spDefense": 83,
+      "speed": 75
+    },
+    "baseId": 354,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガチリーン",
+    "types": [
+      "エスパー",
+      "はがね"
+    ],
+    "abilities": [
+      {
+        "name": "ふゆう",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 75,
+      "attack": 50,
+      "defense": 110,
+      "spAttack": 135,
+      "spDefense": 120,
+      "speed": 65
+    },
+    "baseId": 358,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガアブソル",
+    "types": [
+      "あく"
+    ],
+    "abilities": [
+      {
+        "name": "マジックミラー",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 150,
+      "defense": 60,
+      "spAttack": 115,
+      "spDefense": 60,
+      "speed": 115
+    },
+    "baseId": 359,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガアブソルZ",
+    "types": [
+      "あく",
+      "ゴースト"
+    ],
+    "abilities": [],
+    "stats": {
+      "hp": 65,
+      "attack": 154,
+      "defense": 60,
+      "spAttack": 75,
+      "spDefense": 60,
+      "speed": 151
+    },
+    "baseId": 359,
+    "formKey": "mega-z"
+  },
+  {
+    "name": "メガオニゴーリ",
+    "types": [
+      "こおり"
+    ],
+    "abilities": [
+      {
+        "name": "フリーズスキン",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 120,
+      "defense": 80,
+      "spAttack": 120,
+      "spDefense": 80,
+      "speed": 100
+    },
+    "baseId": 362,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガボーマンダ",
+    "types": [
+      "ドラゴン",
+      "ひこう"
+    ],
+    "abilities": [
+      {
+        "name": "スカイスキン",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 95,
+      "attack": 145,
+      "defense": 130,
+      "spAttack": 120,
+      "spDefense": 90,
+      "speed": 120
+    },
+    "baseId": 373,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガメタグロス",
+    "types": [
+      "はがね",
+      "エスパー"
+    ],
+    "abilities": [
+      {
+        "name": "かたいツメ",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 145,
+      "defense": 150,
+      "spAttack": 105,
+      "spDefense": 110,
+      "speed": 110
+    },
+    "baseId": 376,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガラティアス",
+    "types": [
+      "ドラゴン",
+      "エスパー"
+    ],
+    "abilities": [
+      {
+        "name": "ふゆう",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 100,
+      "defense": 120,
+      "spAttack": 140,
+      "spDefense": 150,
+      "speed": 110
+    },
+    "baseId": 380,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガラティオス",
+    "types": [
+      "ドラゴン",
+      "エスパー"
+    ],
+    "abilities": [
+      {
+        "name": "ふゆう",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 80,
+      "attack": 130,
+      "defense": 100,
+      "spAttack": 160,
+      "spDefense": 120,
+      "speed": 110
+    },
+    "baseId": 381,
+    "formKey": "mega"
+  },
+  {
+    "name": "ゲンシカイオーガ",
+    "types": [
+      "みず"
+    ],
+    "abilities": [
+      {
+        "name": "はじまりのうみ",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 100,
+      "attack": 150,
+      "defense": 90,
+      "spAttack": 180,
+      "spDefense": 160,
+      "speed": 90
+    },
+    "baseId": 382,
+    "formKey": "primal"
+  },
+  {
+    "name": "ゲンシグラードン",
+    "types": [
+      "じめん",
+      "ほのお"
+    ],
+    "abilities": [
+      {
+        "name": "おわりのだいち",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 100,
+      "attack": 180,
+      "defense": 160,
+      "spAttack": 150,
+      "spDefense": 90,
+      "speed": 90
+    },
+    "baseId": 383,
+    "formKey": "primal"
+  },
+  {
+    "name": "メガレックウザ",
+    "types": [
+      "ドラゴン",
+      "ひこう"
+    ],
+    "abilities": [
+      {
+        "name": "デルタストリーム",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 105,
+      "attack": 180,
+      "defense": 100,
+      "spAttack": 180,
+      "spDefense": 100,
+      "speed": 115
+    },
+    "baseId": 384,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガムクホーク",
+    "types": [
+      "かくとう",
+      "ひこう"
+    ],
+    "abilities": [
+      {
+        "name": "あまのじゃく",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 85,
+      "attack": 140,
+      "defense": 100,
+      "spAttack": 60,
+      "spDefense": 90,
+      "speed": 110
+    },
+    "baseId": 398,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガミミロップ",
+    "types": [
+      "ノーマル",
+      "かくとう"
+    ],
+    "abilities": [
+      {
+        "name": "きもったま",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 136,
+      "defense": 94,
+      "spAttack": 54,
+      "spDefense": 96,
+      "speed": 135
+    },
+    "baseId": 428,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガガブリアス",
+    "types": [
+      "ドラゴン",
+      "じめん"
+    ],
+    "abilities": [
+      {
+        "name": "すなのちから",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 108,
+      "attack": 170,
+      "defense": 115,
+      "spAttack": 120,
+      "spDefense": 95,
+      "speed": 92
+    },
+    "baseId": 445,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガガブリアスZ",
+    "types": [
+      "ドラゴン"
+    ],
+    "abilities": [],
+    "stats": {
+      "hp": 108,
+      "attack": 130,
+      "defense": 85,
+      "spAttack": 141,
+      "spDefense": 85,
+      "speed": 151
+    },
+    "baseId": 445,
+    "formKey": "mega-z"
+  },
+  {
+    "name": "メガルカリオ",
+    "types": [
+      "かくとう",
+      "はがね"
+    ],
+    "abilities": [
+      {
+        "name": "てきおうりょく",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 145,
+      "defense": 88,
+      "spAttack": 140,
+      "spDefense": 70,
+      "speed": 112
+    },
+    "baseId": 448,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガルカリオZ",
+    "types": [
+      "かくとう",
+      "はがね"
+    ],
+    "abilities": [],
+    "stats": {
+      "hp": 70,
+      "attack": 100,
+      "defense": 70,
+      "spAttack": 164,
+      "spDefense": 70,
+      "speed": 151
+    },
+    "baseId": 448,
+    "formKey": "mega-z"
+  },
+  {
+    "name": "メガユキノオー",
+    "types": [
+      "くさ",
+      "こおり"
+    ],
+    "abilities": [
+      {
+        "name": "ゆきふらし",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 90,
+      "attack": 132,
+      "defense": 105,
+      "spAttack": 132,
+      "spDefense": 105,
+      "speed": 30
+    },
+    "baseId": 460,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガエルレイド",
+    "types": [
+      "エスパー",
+      "かくとう"
+    ],
+    "abilities": [
+      {
+        "name": "せいしんりょく",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 68,
+      "attack": 165,
+      "defense": 95,
+      "spAttack": 65,
+      "spDefense": 115,
+      "speed": 110
+    },
+    "baseId": 475,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガユキメノコ",
+    "types": [
+      "こおり",
+      "ゴースト"
+    ],
+    "abilities": [
+      {
+        "name": "ゆきふらし",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 70,
+      "attack": 80,
+      "defense": 70,
+      "spAttack": 140,
+      "spDefense": 100,
+      "speed": 120
+    },
+    "baseId": 478,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガヒードラン",
+    "types": [
+      "ほのお",
+      "はがね"
+    ],
+    "abilities": [],
+    "stats": {
+      "hp": 91,
+      "attack": 120,
+      "defense": 106,
+      "spAttack": 175,
+      "spDefense": 141,
+      "speed": 67
+    },
+    "baseId": 485,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガダークライ",
+    "types": [
+      "あく"
+    ],
+    "abilities": [],
+    "stats": {
+      "hp": 70,
+      "attack": 120,
+      "defense": 130,
+      "spAttack": 165,
+      "spDefense": 130,
+      "speed": 85
+    },
+    "baseId": 491,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガエンブオー",
+    "types": [
+      "ほのお",
+      "かくとう"
+    ],
+    "abilities": [
+      {
+        "name": "かたやぶり",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 110,
+      "attack": 148,
+      "defense": 75,
+      "spAttack": 110,
+      "spDefense": 110,
+      "speed": 75
+    },
+    "baseId": 500,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガドリュウズ",
+    "types": [
+      "じめん",
+      "はがね"
+    ],
+    "abilities": [
+      {
+        "name": "かんつうドリル",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 110,
+      "attack": 165,
+      "defense": 100,
+      "spAttack": 65,
+      "spDefense": 65,
+      "speed": 103
+    },
+    "baseId": 530,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガタブンネ",
+    "types": [
+      "ノーマル",
+      "フェアリー"
+    ],
+    "abilities": [
+      {
+        "name": "いやしのこころ",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 103,
+      "attack": 60,
+      "defense": 126,
+      "spAttack": 80,
+      "spDefense": 126,
+      "speed": 50
+    },
+    "baseId": 531,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガペンドラー",
+    "types": [
+      "むし",
+      "どく"
+    ],
+    "abilities": [
+      {
+        "name": "シェルアーマー",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 140,
+      "defense": 149,
+      "spAttack": 75,
+      "spDefense": 99,
+      "speed": 62
+    },
+    "baseId": 545,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガズルズキン",
+    "types": [
+      "あく",
+      "かくとう"
+    ],
+    "abilities": [
+      {
+        "name": "いかく",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 130,
+      "defense": 135,
+      "spAttack": 55,
+      "spDefense": 135,
+      "speed": 68
+    },
+    "baseId": 560,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガシビルドン",
+    "types": [
+      "でんき"
+    ],
+    "abilities": [
+      {
+        "name": "eelevate",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 85,
+      "attack": 145,
+      "defense": 80,
+      "spAttack": 135,
+      "spDefense": 90,
+      "speed": 80
+    },
+    "baseId": 604,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガシャンデラ",
+    "types": [
+      "ゴースト",
+      "ほのお"
+    ],
+    "abilities": [
+      {
+        "name": "すりぬけ",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 60,
+      "attack": 75,
+      "defense": 110,
+      "spAttack": 175,
+      "spDefense": 110,
+      "speed": 90
+    },
+    "baseId": 609,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガゴルーグ",
+    "types": [
+      "じめん",
+      "ゴースト"
+    ],
+    "abilities": [
+      {
+        "name": "ふかしのこぶし",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 89,
+      "attack": 159,
+      "defense": 105,
+      "spAttack": 70,
+      "spDefense": 105,
+      "speed": 55
+    },
+    "baseId": 623,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガブリガロン",
+    "types": [
+      "くさ",
+      "かくとう"
+    ],
+    "abilities": [
+      {
+        "name": "ぼうだん",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 88,
+      "attack": 137,
+      "defense": 172,
+      "spAttack": 74,
+      "spDefense": 115,
+      "speed": 44
+    },
+    "baseId": 652,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガマフォクシー",
+    "types": [
+      "ほのお",
+      "エスパー"
+    ],
+    "abilities": [
+      {
+        "name": "ふゆう",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 75,
+      "attack": 69,
+      "defense": 72,
+      "spAttack": 159,
+      "spDefense": 125,
+      "speed": 134
+    },
+    "baseId": 655,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガゲッコウガ",
+    "types": [
+      "みず",
+      "あく"
+    ],
+    "abilities": [
+      {
+        "name": "へんげんじざい",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 72,
+      "attack": 125,
+      "defense": 77,
+      "spAttack": 133,
+      "spDefense": 81,
+      "speed": 142
+    },
+    "baseId": 658,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガカエンジシ",
+    "types": [
+      "ほのお",
+      "ノーマル"
+    ],
+    "abilities": [
+      {
+        "name": "fire-mane",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 86,
+      "attack": 88,
+      "defense": 92,
+      "spAttack": 129,
+      "spDefense": 86,
+      "speed": 126
+    },
+    "baseId": 668,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガフラエッテ",
+    "types": [
+      "フェアリー"
+    ],
+    "abilities": [
+      {
+        "name": "フェアリーオーラ",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 74,
+      "attack": 85,
+      "defense": 87,
+      "spAttack": 155,
+      "spDefense": 148,
+      "speed": 102
+    },
+    "baseId": 670,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガニャオニクス(オスのすがた)",
+    "types": [
+      "エスパー"
+    ],
+    "abilities": [
+      {
+        "name": "トレース",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 74,
+      "attack": 48,
+      "defense": 76,
+      "spAttack": 143,
+      "spDefense": 101,
+      "speed": 124
+    },
+    "baseId": 678,
+    "formKey": "male-mega"
+  },
+  {
+    "name": "メガニャオニクス(メスのすがた)",
+    "types": [
+      "エスパー"
+    ],
+    "abilities": [
+      {
+        "name": "トレース",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 74,
+      "attack": 48,
+      "defense": 76,
+      "spAttack": 143,
+      "spDefense": 101,
+      "speed": 124
+    },
+    "baseId": 678,
+    "formKey": "female-mega"
+  },
+  {
+    "name": "メガカラマネロ",
+    "types": [
+      "あく",
+      "エスパー"
+    ],
+    "abilities": [
+      {
+        "name": "あまのじゃく",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 86,
+      "attack": 102,
+      "defense": 88,
+      "spAttack": 98,
+      "spDefense": 120,
+      "speed": 88
+    },
+    "baseId": 687,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガガメノデス",
+    "types": [
+      "いわ",
+      "かくとう"
+    ],
+    "abilities": [
+      {
+        "name": "かたいツメ",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 72,
+      "attack": 140,
+      "defense": 130,
+      "spAttack": 64,
+      "spDefense": 106,
+      "speed": 88
+    },
+    "baseId": 689,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガドラミドロ",
+    "types": [
+      "どく",
+      "ドラゴン"
+    ],
+    "abilities": [
+      {
+        "name": "さいせいりょく",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 85,
+      "defense": 105,
+      "spAttack": 132,
+      "spDefense": 163,
+      "speed": 44
+    },
+    "baseId": 691,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガルチャブル",
+    "types": [
+      "かくとう",
+      "ひこう"
+    ],
+    "abilities": [
+      {
+        "name": "ノーガード",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 78,
+      "attack": 137,
+      "defense": 100,
+      "spAttack": 74,
+      "spDefense": 93,
+      "speed": 118
+    },
+    "baseId": 701,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガジガルデ",
+    "types": [
+      "ドラゴン",
+      "じめん"
+    ],
+    "abilities": [],
+    "stats": {
+      "hp": 216,
+      "attack": 70,
+      "defense": 91,
+      "spAttack": 216,
+      "spDefense": 85,
+      "speed": 100
+    },
+    "baseId": 718,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガディアンシー",
+    "types": [
+      "いわ",
+      "フェアリー"
+    ],
+    "abilities": [
+      {
+        "name": "マジックミラー",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 50,
+      "attack": 160,
+      "defense": 110,
+      "spAttack": 160,
+      "spDefense": 110,
+      "speed": 110
+    },
+    "baseId": 719,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガケケンカニ",
+    "types": [
+      "かくとう",
+      "こおり"
+    ],
+    "abilities": [
+      {
+        "name": "てつのこぶし",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 97,
+      "attack": 157,
+      "defense": 122,
+      "spAttack": 62,
+      "spDefense": 107,
+      "speed": 33
+    },
+    "baseId": 740,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガグソクムシャ",
+    "types": [
+      "むし",
+      "はがね"
+    ],
+    "abilities": [],
+    "stats": {
+      "hp": 75,
+      "attack": 150,
+      "defense": 175,
+      "spAttack": 70,
+      "spDefense": 120,
+      "speed": 40
+    },
+    "baseId": 768,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガジジーロン",
+    "types": [
+      "ノーマル",
+      "ドラゴン"
+    ],
+    "abilities": [
+      {
+        "name": "ぎゃくじょう",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 78,
+      "attack": 85,
+      "defense": 110,
+      "spAttack": 160,
+      "spDefense": 116,
+      "speed": 36
+    },
+    "baseId": 780,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガマギアナ",
+    "types": [
+      "はがね",
+      "フェアリー"
+    ],
+    "abilities": [],
+    "stats": {
+      "hp": 80,
+      "attack": 125,
+      "defense": 115,
+      "spAttack": 170,
+      "spDefense": 115,
+      "speed": 95
+    },
+    "baseId": 801,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガマギアナ(５００ねんまえのいろ)",
+    "types": [
+      "はがね",
+      "フェアリー"
+    ],
+    "abilities": [],
+    "stats": {
+      "hp": 80,
+      "attack": 125,
+      "defense": 115,
+      "spAttack": 170,
+      "spDefense": 115,
+      "speed": 95
+    },
+    "baseId": 801,
+    "formKey": "original-mega"
+  },
+  {
+    "name": "メガゼラオラ",
+    "types": [
+      "でんき"
+    ],
+    "abilities": [],
+    "stats": {
+      "hp": 88,
+      "attack": 157,
+      "defense": 75,
+      "spAttack": 147,
+      "spDefense": 80,
+      "speed": 153
+    },
+    "baseId": 807,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガタイレーツ",
+    "types": [
+      "かくとう"
+    ],
+    "abilities": [
+      {
+        "name": "まけんき",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 135,
+      "defense": 135,
+      "spAttack": 70,
+      "spDefense": 65,
+      "speed": 100
+    },
+    "baseId": 870,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガスコヴィラン",
+    "types": [
+      "くさ",
+      "ほのお"
+    ],
+    "abilities": [
+      {
+        "name": "とびだすハバネロ",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 65,
+      "attack": 138,
+      "defense": 85,
+      "spAttack": 138,
+      "spDefense": 85,
+      "speed": 75
+    },
+    "baseId": 952,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガキラフロル",
+    "types": [
+      "いわ",
+      "どく"
+    ],
+    "abilities": [
+      {
+        "name": "てきおうりょく",
+        "hidden": false
+      }
+    ],
+    "stats": {
+      "hp": 83,
+      "attack": 90,
+      "defense": 105,
+      "spAttack": 150,
+      "spDefense": 96,
+      "speed": 101
+    },
+    "baseId": 970,
+    "formKey": "mega"
+  },
+  {
+    "name": "メガシャリタツ(そったすがた)",
+    "types": [
+      "ドラゴン",
+      "みず"
+    ],
+    "abilities": [],
+    "stats": {
+      "hp": 68,
+      "attack": 65,
+      "defense": 90,
+      "spAttack": 135,
+      "spDefense": 125,
+      "speed": 92
+    },
+    "baseId": 978,
+    "formKey": "curly-mega"
+  },
+  {
+    "name": "メガシャリタツ(たれたすがた)",
+    "types": [
+      "ドラゴン",
+      "みず"
+    ],
+    "abilities": [],
+    "stats": {
+      "hp": 68,
+      "attack": 65,
+      "defense": 90,
+      "spAttack": 135,
+      "spDefense": 125,
+      "speed": 92
+    },
+    "baseId": 978,
+    "formKey": "droopy-mega"
+  },
+  {
+    "name": "メガシャリタツ(のびたすがた)",
+    "types": [
+      "ドラゴン",
+      "みず"
+    ],
+    "abilities": [],
+    "stats": {
+      "hp": 68,
+      "attack": 65,
+      "defense": 90,
+      "spAttack": 135,
+      "spDefense": 125,
+      "speed": 92
+    },
+    "baseId": 978,
+    "formKey": "stretchy-mega"
+  },
+  {
+    "name": "メガセグレイブ",
+    "types": [
+      "ドラゴン",
+      "こおり"
+    ],
+    "abilities": [],
+    "stats": {
+      "hp": 115,
+      "attack": 175,
+      "defense": 117,
+      "spAttack": 105,
+      "spDefense": 101,
+      "speed": 87
+    },
+    "baseId": 998,
+    "formKey": "mega"
   }
 ]
