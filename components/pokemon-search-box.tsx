@@ -9,7 +9,7 @@ type PokemonSearchBoxProps = {
   searchTerm: string;
   suggestions: PokemonSuggestion[];
   onSearchTermChange: (value: string) => void;
-  onSelectPokemon: (name: string, types: string[]) => void;
+  onSelectPokemon: (pokemon: PokemonSuggestion) => void;
 };
 
 export function PokemonSearchBox({
@@ -37,7 +37,7 @@ export function PokemonSearchBox({
                 className="w-full text-left p-3 hover:bg-slate-100 dark:hover:bg-slate-600 border-b last:border-0 border-slate-100 dark:border-slate-600 transition-colors"
                 onMouseDown={(e) => {
                   e.preventDefault();
-                  onSelectPokemon(p.name, p.types);
+                  onSelectPokemon(p);
                 }}
               >
                 <span className="font-bold">{p.name}</span>

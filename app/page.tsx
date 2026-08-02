@@ -6,34 +6,52 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { BaseStats } from "@/components/base-stats";
 import { EffectivenessResults } from "@/components/effectiveness-results";
+import { PokemonAbilities } from "@/components/pokemon-abilities";
 import { PokemonSearchBox } from "@/components/pokemon-search-box";
 import { TypeSelector } from "@/components/type-selector";
-import { usePokemonSearch } from "@/hooks/use-pokemon-search";
+import { usePokemonSearch, type PokemonSuggestion } from "@/hooks/use-pokemon-search";
 import { getWeaknessCategories, groupResultsByCategory } from "@/lib/type-chart";
 
 export default function PokemonTypeCalculator() {
   const [selectedDefenseTypes, setSelectedDefenseTypes] = useState<string[]>(["ノーマル"]);
+  const [selectedPokemon, setSelectedPokemon] = useState<PokemonSuggestion | null>(null);
+  const [selectedAbility, setSelectedAbility] = useState<string | null>(null);
   const [activeItems, setActiveItems] = useState<string[]>(() =>
     getWeaknessCategories(["ノーマル"])
   );
   const { searchTerm, suggestions, setSearchTerm, selectSuggestion } = usePokemonSearch();
 
   const groupedResults = useMemo(
-    () => groupResultsByCategory(selectedDefenseTypes),
-    [selectedDefenseTypes]
+    () => groupResultsByCategory(selectedDefenseTypes, selectedAbility),
+    [selectedDefenseTypes, selectedAbility]
   );
 
-  const handleSelectPokemon = (name: string, types: string[]) => {
-    selectSuggestion(name);
-    setSelectedDefenseTypes(types);
+  const handleSelectPokemon = (pokemon: PokemonSuggestion) => {
+    selectSuggestion(pokemon.name);
+    setSelectedPokemon(pokemon);
+    setSelectedAbility(null);
+    setSelectedDefenseTypes(pokemon.types);
 
     // 弱点があれば自動展開
-    const openItems = getWeaknessCategories(types);
+    const openItems = getWeaknessCategories(pokemon.types);
     setActiveItems(openItems);
   };
 
+  const handleToggleAbility = (ability: string) => {
+    const next = selectedAbility === ability ? null : ability;
+    setSelectedAbility(next);
+
+    // 弱点があれば自動展開
+    const openItems = getWeaknessCategories(selectedDefenseTypes, next);
+    if (openItems.length > 0) setActiveItems(openItems);
+  };
+
   const toggleDefenseType = (type: string) => {
+    // タイプを手動で変更したら選択中のポケモン固有の表示（特性・種族値）はクリアする
+    setSelectedPokemon(null);
+    setSelectedAbility(null);
     setSelectedDefenseTypes((prev) => {
       let next;
       if (prev.includes(type)) {
@@ -61,6 +79,19 @@ export default function PokemonTypeCalculator() {
         />
 
         <TypeSelector selectedTypes={selectedDefenseTypes} onToggleType={toggleDefenseType} />
+
+        {selectedPokemon?.abilities && selectedPokemon.abilities.length > 0 && (
+          <PokemonAbilities
+            pokemonName={selectedPokemon.name}
+            abilities={selectedPokemon.abilities}
+            selectedAbility={selectedAbility}
+            onToggleAbility={handleToggleAbility}
+          />
+        )}
+
+        {selectedPokemon?.stats && (
+          <BaseStats pokemonName={selectedPokemon.name} stats={selectedPokemon.stats} />
+        )}
 
         <EffectivenessResults
           groupedResults={groupedResults}

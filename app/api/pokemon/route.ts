@@ -7,7 +7,21 @@ import { NextResponse } from 'next/server';
 import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
 
-type Pokemon = { name: string; types: string[] };
+type PokemonAbility = { name: string; hidden: boolean; description?: string };
+type PokemonStats = {
+  hp: number;
+  attack: number;
+  defense: number;
+  spAttack: number;
+  spDefense: number;
+  speed: number;
+};
+type Pokemon = {
+  name: string;
+  types: string[];
+  abilities?: PokemonAbility[];
+  stats?: PokemonStats;
+};
 
 /**
  * ひらがなをカタカナに変換する関数
@@ -37,7 +51,16 @@ function loadPokemonData(): Pokemon[] {
     ? JSON.parse(readFileSync(variantsFilePath, 'utf8'))
     : [];
 
-  cachedPokemonData = [...baseData, ...variantsData];
+  // 特性の解説文（日本語特性名→解説文）を各特性に付加する
+  const descriptionsFilePath = join(process.cwd(), 'src', 'data', 'ability-descriptions.json');
+  const descriptions: Record<string, string> = existsSync(descriptionsFilePath)
+    ? JSON.parse(readFileSync(descriptionsFilePath, 'utf8'))
+    : {};
+
+  cachedPokemonData = [...baseData, ...variantsData].map((p) => ({
+    ...p,
+    abilities: p.abilities?.map((a) => ({ ...a, description: descriptions[a.name] })),
+  }));
   return cachedPokemonData;
 }
 
